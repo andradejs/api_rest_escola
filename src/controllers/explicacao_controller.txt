@@ -1,0 +1,2 @@
+Os controlers são funções responsavel por processar
+as requisição quando o cliente acessa as rotas

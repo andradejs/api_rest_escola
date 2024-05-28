@@ -1,0 +1,15 @@
+//O sequelizerc é uma ferramenta para a modelagem do banco de dados
+//como criar tabelas, inserir dados e manipulação do banco de dados
+//nesse arquivo configuramos onde o sequelize encontra e manipula os
+//arquivos como configuração do banco de dados, models, migrations e
+//seeders
+
+const { resolve, dirname } = require(`path`);
+
+module.exports = {
+  config: resolve(__dirname, 'src', 'config', 'database.js'),
+  'models-path': resolve(__dirname, 'src', 'models'),
+  'migrations-path': resolve(__dirname, 'src', 'database', 'migrations'),
+  'seeders-path': resolve(__dirname, 'src', 'database', 'seeds'),
+
+};

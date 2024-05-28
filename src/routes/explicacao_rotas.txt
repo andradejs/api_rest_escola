@@ -1,0 +1,4 @@
+A pasta das rotas servem para organizar rotas que seram utilizada em cada página
+cada arquivo vai ficar responsavel por todas as rotas que vai ter em cada página.
+Uma rota é um caminho que o cliente acessa e tem a finalidade em conectar o clien-
+te com um determinada controller que fará processamento da requisição

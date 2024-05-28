@@ -1,0 +1,3 @@
+Os models é uma pasta que organiza os modelos para a
+inserção de dados as tabelas do banco de dados
+fazendo também a validação de alguns dados,

@@ -1,0 +1,2 @@
+As migrations é uma modelagem para a cria das tabelas no banco de dados
+como construir o tipo e a configuração de cada campo.

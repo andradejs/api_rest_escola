@@ -1,0 +1,3 @@
+#serve para ignorar arquivos para git como pasta node e dotenv
+node_modules
+.env
