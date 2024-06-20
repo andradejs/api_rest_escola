@@ -1,4 +1,4 @@
-import User from "../models/User";
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _User = require('../models/User'); var _User2 = _interopRequireDefault(_User);
 
 //store -cria um dado
 //index -lista dados
@@ -10,7 +10,7 @@ class UserController {
   async store(req, res) {
     try {
       const usuario = req.body;
-      const novoUser = await User.create(usuario);
+      const novoUser = await _User2.default.create(usuario);
 
       res.json(novoUser);
     } catch (e) {
@@ -21,7 +21,7 @@ class UserController {
 
   async index(req, res) {
     try {
-      const usuarios = await User.findAll({
+      const usuarios = await _User2.default.findAll({
         attributes: ["id", "nome", "email"],
       });
       return res.json(usuarios);
@@ -33,7 +33,7 @@ class UserController {
 
   async show(req, res) {
     try {
-      const foundUser = await User.findByPk(req.userId);
+      const foundUser = await _User2.default.findByPk(req.userId);
       const { id, name, email } = foundUser;
 
       return res.json({ id, name, email });
@@ -45,7 +45,7 @@ class UserController {
 
   async update(req, res) {
     try {
-      const user = await User.findByPk(req.userId);
+      const user = await _User2.default.findByPk(req.userId);
 
       if (!user) {
         return res.status(400).json({
@@ -63,7 +63,7 @@ class UserController {
 
   async delete(req, res) {
     try {
-      const user = await User.findByPk(req.userId);
+      const user = await _User2.default.findByPk(req.userId);
 
       if (!user) {
         return res.status(400).json({
@@ -81,4 +81,4 @@ class UserController {
   }
 }
 
-export default new UserController();
+exports. default = new UserController();

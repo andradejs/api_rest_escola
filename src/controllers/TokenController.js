@@ -1,44 +1,39 @@
-
-import User from "../models/User"
-import bcryptjs from 'bcryptjs'
-import jwt from 'jsonwebtoken'
-
+import User from "../models/User";
+import bcryptjs from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 
-class TokenController{
-
-  async store(req,res){
+class TokenController {
+  async store(req, res) {
     try {
+      const { email = "", password = "" } = req.body;
 
-      const {email = '', password = ''} = req.body
-
-      if (!email || !password){
-        return res.status(401).json({errors :['Credenciais invalidas']})
+      if (!email || !password) {
+        return res.status(401).json({ errors: ["Credenciais invalidas"] });
       }
 
-      const user = await User.findOne({where: {email}})
+      const user = await User.findOne({ where: { email } });
 
-      if (!user){
-        return res.status(401).json({errors:['Usuário não existente']})
+      if (!user) {
+        return res.status(401).json({ errors: ["Usuário não existente"] });
       }
 
-      if (! await bcryptjs.compare(password,user.password_hash)){
-        return res.status(401).json({errors :['Credenciais invalidas']})
+      if (!(await bcryptjs.compare(password, user.password_hash))) {
+        return res.status(401).json({ errors: ["Credenciais invalidas"] });
       }
 
-      const {id} = user
+      const { id } = user;
 
-      const token = jwt.sign( {id,email}, process.env.TOKEN_SECRET,{
-        expiresIn: process.env.TOKEN_EXPIRATION
-      })
+      const token = jwt.sign({ id, email }, process.env.TOKEN_SECRET, {
+        expiresIn: process.env.TOKEN_EXPIRATION,
+      });
 
-      return res.json({token})
-
+      return res.json({ token, user: { nome: user.nome, id, email } });
     } catch (error) {
-      console.log(error)
-      return res.json(null)
+      console.log(error);
+      return res.json(null);
     }
   }
 }
 
-export default new TokenController()
+export default new TokenController();

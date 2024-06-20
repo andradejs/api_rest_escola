@@ -3,13 +3,8 @@
 //cliente está requisitando. Aqui vemos o app que foi im-
 //portado do arquivo app executando essa requisições.
 
+import app from "./app";
 
-import app from  './app'
+const port = process.env.APP_PORT;
 
-const port = 3001
-
-app.listen(port, ()=>{
-  console.log()
-  console.log(`Escutando na porta ${port}`)
-  console.log(`CTRL + click  em http://localhost:${port}`)
-})
+app.listen(port, () => {});

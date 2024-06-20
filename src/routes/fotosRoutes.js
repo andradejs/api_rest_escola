@@ -3,6 +3,6 @@ import FotosController from "../controllers/FotosController";
 import loginMiddlewares from "../middlewares/loginMiddlewares";
 
 const router = new Router();
-router.post('/',loginMiddlewares, FotosController.store)
+router.post("/", loginMiddlewares, FotosController.store);
 
 export default router;
